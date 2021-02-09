@@ -1,9 +1,9 @@
 /**
- * Config :
+ * Config Profile:
  */
 const SECRET = "your_secret_here";
-const REPO = "/var/www";
-const PORT = 8080;
+const REPO = "/var/www/project";
+const PORT = 5000;
 
 /*****************************************************/
 let http = require("http");
@@ -24,6 +24,11 @@ http
         exec("cd " + REPO + " && git pull");
       }
     });
-    res.end();
+    res.end("Hello Git webhook!");
   })
-  .listen(PORT);
+  .listen(PORT, (err) => {
+    if (err) {
+      return console.log("error: ", err);
+    }
+    console.log(`server is listening on ${PORT}`);
+  });
