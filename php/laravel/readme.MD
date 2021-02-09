@@ -32,6 +32,10 @@
     // if u are using gitlab
     $this->validateGitlabWebhook(config('app.webhook_secret'), $request); 
     ```   
+7. create api router to `routes/api.php`   
+    ```php
+    Route::post('/webhook', 'WebhookController@handle'); 
+    ```
 
    
 ## optional:
