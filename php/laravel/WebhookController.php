@@ -88,7 +88,7 @@ class WebhookController
         $root_path = base_path(); 
         $process = new Process(['cd', $root_path, '&&', './webhook.sh']);
         $process->run(function ($type, $buffer) {
-            echo $buffer;
+            $this->logger->info("[webhook]: ".$type.", ".$buffer); 
         });
 
         $this->logger->info("finished!");
